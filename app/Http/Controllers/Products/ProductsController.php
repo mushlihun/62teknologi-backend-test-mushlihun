@@ -17,7 +17,7 @@ use Illuminate\Http\Response;
  *     version="1.0.0",
  *     title="Basic CRUD Laravel API Documentation",
  *     @OA\Contact(
- *         email="manirujjamanakash@gmail.com"
+ *         email="listcreative15@gmail.com"
  *     ),
  *     @OA\License(
  *         name="GPL2",

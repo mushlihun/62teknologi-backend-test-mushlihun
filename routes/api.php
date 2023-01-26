@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Products\ProductsController;
+use App\Http\Controllers\BusinessController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +39,22 @@ Route::group([
     Route::resource('products', ProductsController::class);
     Route::get('products/view/all', [ProductsController::class, 'indexAll']);
     Route::get('products/view/search', [ProductsController::class, 'search']);
+
+    /**
+     * Business
+     */
+    Route::controller(BusinessController::class)->group(function () {
+        Route::get('business', 'fetchAllData');
+        Route::get('business/search', 'index');
+        Route::get('business/{slug}', 'showslug');
+        Route::get('business/search={field}={keyword}&sort_by={sortBy}&limit={limit}', 'fetchDataByParams');
+        Route::post('business', 'store');
+        Route::put('business/{id}', 'update');
+        Route::delete('business/{id}', 'destroy');
+        
+    });
+    
+    Route::get('category', [CategoryController::class, 'index']);
 
 });
 
