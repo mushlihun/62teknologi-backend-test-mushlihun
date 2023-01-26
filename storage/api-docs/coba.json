@@ -18,7 +18,7 @@
     }
   ],
     "paths": {
-      "/api/business": {
+      "/api/business/{slug}": {
         "get": {
           "tags": [
             "Business"
@@ -44,7 +44,7 @@
           ]
         }
       },
-      "/api/business/{id}": {
+      "/api/business": {
         "post": {
           "tags": [
             "Business"
@@ -56,14 +56,44 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/auth_login_body"
+                  "$ref": "#/components/schemas/business"
                 }
               }
             }
           },
           "responses": {
             "200": {
-              "description": "Login"
+              "description": "Update"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          }
+        }
+      },
+      "/api/business/{id}": {
+        "delete": {
+          "tags": [
+            "Business"
+          ],
+          "summary": "Delete Business",
+          "description": "Delete data business",
+          "operationId": "535ffeda4b78916efd658b2844ea897a",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/business"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Delete"
             },
             "400": {
               "description": "Bad request"
@@ -499,6 +529,32 @@
     },
     "components": {
       "schemas": {
+        "business": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "Ikan Goreng"
+            },
+            "alias": {
+              "type": "string",
+              "example": "ikan goreng"
+            },
+            "categories": [{
+              "category_id": "1",
+              "example": "123456"
+            }],
+            "coordinates": {
+              "latitude": 41.7873382568356,
+              "longitude": -123.051551818848
+            },
+            "distance": {
+              "type": "string",
+              "example": "-123.051551818848"
+            }
+          }
+          
+        },
         "auth_register_body": {
           "type": "object",
           "properties": {

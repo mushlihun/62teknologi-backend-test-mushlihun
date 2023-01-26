@@ -39,7 +39,6 @@ class Business extends Model
             ]
         ];
     }
-
     public function getBusinesses($search)
     {
         $name = Arr::get($search, 'name', '');
@@ -105,22 +104,18 @@ class Business extends Model
         //return BusinessResource::collection($data);
 
     }
-
     public function getBusinessDetail($id)
     {
         $data = Business::query();
         $data->where('id', $id);
         return new BusinessResource($data->first());
     }
-
     public function getBusinessDetailSlug($slug)
     {
-        // $data = Business::query();
-        $data = Business::all();
-        $data->where('alias', $slug);
+        $data = Business::query();
+        $data->where('id', $slug);
         return new BusinessResource($data->first());
     }
-
     public function getCategories($business_id)
     {
         $data = BusinessesCategory::join('business_category_relation as t01', 't01.category_id', '=', 'businesses_categories.id')
@@ -128,6 +123,66 @@ class Business extends Model
         ->where('business_id', $business_id)
         ->get(['businesses_categories.alias','businesses_categories.title']);
         return $data;
+    }
+    public function insertData($data_post)
+    {
+
+        $data_business = array(
+            "name" => $data_post['name'],
+            "alias" => Str::slug($data_post['alias']),
+            "categories" => $data_post['categories'],
+            "coordinates" => $data_post['coordinates'],
+            "distance" => $data_post['distance'],
+            "is_closed" => $data_post['is_closed'],
+            'location' => $data_post['location'],
+            "phone" => $data_post['phone'],
+            "price" => $data_post['price'],
+            "rating" => $data_post['rating'],
+            "review_count" => $data_post['review_count'],
+            "transactions" => $data_post['transactions'],
+            "image_url" => $data_post['image_url'],
+            "transaction_url" => $data_post['transactions'],
+            "url" => $data_post['url']
+        );
+        //insert business 
+        $business = Business::create($data_business);
+        $business_id = $business->id;
+
+        //insert categories
+        $categories = $data_post['categories'];
+
+        for ($i = 0; $i < count($categories); $i++) {
+            $data_categories = array(
+                "business_id" => $business_id,
+                "category_id" => $categories[$i]['category_id']
+            );
+
+            $category = BusinessCategoryRelation::create($data_categories);
+        }
+
+
+        //insert address
+        $location = $data_post['location'];
+        $data_location = array(
+            "business_id" => $business_id,
+            "address1" => $location['address1'],
+            "address2" => $location['address2'],
+            "address3" => $location['address3'],
+            "city" => $location['city'],
+            "country" => $location['country'],
+            "state" => $location['state'],
+            "zip_code" => $location['zip_code'],
+        );
+        $locations = BusinessesLocation::create($data_location);
+
+        //coordinates
+        $coordinate = $data_post['coordinates'];
+        $data_coordinates = array(
+            "business_id" => $business_id,
+            "latitude" => $coordinate['latitude'],
+            "longitude" => $coordinate['longitude'],
+        );
+        $coordinates = BusinessesCoordinate::create($data_coordinates);
     }
     public function updateData($data_post, $id)
     {
@@ -142,15 +197,11 @@ class Business extends Model
             "review_count" => $data_post['review_count'],
             "image_url" => $data_post['image_url'],
             "transaction_url" => $data_post['transactions']
-
         );
         Business::where('id', $id)
             ->update($data_business);
-
-        //update location
         $location = $data_post['location'];
         $data_location = array(
-
             "address1" => $location['address1'],
             "address2" => $location['address2'],
             "address3" => $location['address3'],
@@ -161,27 +212,19 @@ class Business extends Model
         );
         BusinessesLocation::where('business_id', $id)
             ->update($data_location);
-
-        //update coord
         $coordinate = $data_post['coordinates'];
         $data_coordinates = array(
             "latitude" => $coordinate['latitude'],
-            "longitude" => $coordinate['longitude'],
-        );
-        BusinessesCoordinate::where('business_id', $id)
-            ->update($data_coordinates);
-
-        $categories = $data_post['categories'];
+            "longitude" => $coordinate['longitude']);
+        BusinessesCoordinate::where('business_id', $id)->update($data_coordinates);
+            $categories = $data_post['categories'];
         for ($i = 0; $i < count($categories); $i++) {
             $data_categories = array(
                 "business_id" => $id,
-                "category_id" => $categories[$i]['category_id']
-            );
-            //update category
-            BusinessCategoryRelation::updateOrCreate(
-                $data_categories,
-                $data_categories
-            );
+                "category_id" => $categories[$i]['category_id']);
+        BusinessCategoryRelation::updateOrCreate(
+            $data_categories,
+            $data_categories);
         }
     }
 }

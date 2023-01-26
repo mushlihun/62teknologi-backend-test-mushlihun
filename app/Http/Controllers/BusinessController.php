@@ -9,6 +9,7 @@ use App\Http\Requests\StoreBusinessRequest;
 use App\Http\Requests\UpdateBusinessRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class BusinessController extends Controller
 {
@@ -19,38 +20,10 @@ class BusinessController extends Controller
      */
     public function index(Request $request)
     {
-       
-        // $busines = new Business();
-        // $searchParams = $request->all();
-        // $business = $busines->getBusinesses($searchParams);
-        // return BusinessResource::collection($data);
-        $search = $request->json()->all();
-
-        $arrSearch = [];
-
-        if(isset($search['name'])&&$search['name'] != "" && $search['name']!=null){
-            $arrName = ['name','like','%'.$search['name'].'%'];
-            $arrSearch[] = $arrName;
-        }
-        if(isset($search['phone'])&&$search['phone'] != "" && $search['phone']!=null){
-            $arrPhone = ['phone','like','%'.$search['phone'].'%'];
-            $arrSearch[] = $arrPhone;
-        }
-        if(isset($search['price'])&&$search['price'] != "" && $search['price']!=null){
-            $arrPrice = ['price',$search['priceCond'],$search['price']];
-            $arrSearch[] = $arrPrice;
-        }
-        if(isset($search['rating'])&&$search['rating'] != "" && $search['rating']!=null){
-            $arrPrice = ['rating',$search['ratingCond'],$search['rating']];
-            $arrSearch[] = $arrPrice;
-        }
-        if(isset($search['categories'])&&$search['categories'] != "" && $search['categories']!=null){
-            $business = Business::where($arrSearch)->whereIn('categories_id', $search['categories'])->paginate(10);
-        }else{
-            $business = Business::where($arrSearch)->paginate(10);
-        }
-
-        return response()->json(['messages' => 'success', 'data'=>$business], 200);
+        $business = new Business();
+        $searchParams = $request->all();
+        $data = $business->getBusinesses($searchParams);
+        return BusinessResource::collection($data);
     }
 
     /**
@@ -112,28 +85,11 @@ class BusinessController extends Controller
                 'message' => 'Invalid Image Type',
             ], 400);
         }
-        $data = [
-            'alias' => Str::slug($request->alias),
-            'name' => $request->name,
-            'image_url' => $request->image_url,
-            'url' => $request->url,
-            'is_closed' => false,
-            'review_count' => $request->review_count,
-            'categories' => json_encode($request->categories),
-            'rating' => $request->rating,
-            'coordinates' => json_encode($request->coordinates),
-            'transactions' => json_encode($request->transactions),
-            'price' => $request->price,
-            'location' => json_encode($request->location),
-            'phone' => $request->phone,
-            'distance' => $request->distance,
-        ];
         $data = $business->insertData($data_post);
-        $businesses = Businesses::create($data);
         return response()->json([
             'status' => true,
             'message' => 'Business created successfully',
-            "businesses" => $businesses
+            "businesses" => $data_post
         ], 200);
     }
 
@@ -236,36 +192,6 @@ class BusinessController extends Controller
             'message' => 'Successfully Update Business',
         ], 200);
     }
-
-    // public function update(Request $request)
-    // {
-    //     $businesses = Business::find($request->id);
-
-    //     $data = [
-    //         // 'alias' => Str::slug($request->alias),
-    //         'name' => $request->name,
-    //         'image_url' => $request->image_url,
-    //         'url' => $request->url,
-    //         'is_closed' => $request->is_closed,
-    //         'review_count' => $request->review_count,
-    //         'categories' => json_encode($request->categories),
-    //         'rating' => $request->rating,
-    //         'coordinates' => json_encode($request->coordinates),
-    //         'transactions' => json_encode($request->transactions),
-    //         'price' => $request->price,
-    //         'location' => json_encode($request->location),
-    //         'phone' => $request->phone,
-    //         'distance' => $request->distance,
-    //     ];
-
-    //     $businesses->update($data);
-
-    //     return response()->json([
-    //         "success" => true,
-    //         "message" => "updated successfully",
-    //         "businesses" => $businesses
-    //     ], 200);
-    // }
     /**
      * Remove the specified resource from storage.
      *
@@ -292,7 +218,7 @@ class BusinessController extends Controller
 
     public function delete(Request $request)
     {
-        $businesses = Businesses::find($request->id);
+        $businesses = Business::find($request->id);
 
         $businesses->delete();
 
@@ -330,7 +256,7 @@ class BusinessController extends Controller
             ], 404);
         }
 
-        $businesses = Businesses::where($field, 'like', '%' . $keyword . '%')
+        $businesses = Business::where($field, 'like', '%' . $keyword . '%')
             ->orderBy($sortBy)
             ->paginate($limit);
 
@@ -350,5 +276,78 @@ class BusinessController extends Controller
             "message" => "read all successfully",
             "businesses" => $businesses
         ], 200);
+    }
+
+    public function search(Request $request)
+    {
+        if((isset($request->location) || $request->location == null || empty($request->location)) && (isset($request->latitude) || $request->latitude == null || empty($request->latitude)) && (isset($request->longitude) || $request->longitude == null || empty($request->longitude))){
+            $data =  [
+                'status' => 'failed',
+                'data' => null,
+                'message' => 'Please Insert Your Location or Latitude Longitude',
+                'error' => true
+            ];
+            return $data;
+        }
+
+        $dataLocation = [];
+
+        if(isset($request->location) || $request->location !== null){
+            $dataLocation = Business::where(function($q) {
+                $q->where('address1', 'like', '%' . $request->location . '%')
+                  ->orWhere('address2', 'like', '%' . $request->location . '%')
+                  ->orWhere('address3', 'like', '%' . $request->location . '%')
+                  ->orWhere('city', 'like', '%' . $request->location . '%')
+                  ->orWhere('zip_code', 'like', '%' . $request->location . '%')
+                  ->orWhere('country', 'like', '%' . $request->location . '%')
+                  ->orWhere('state', 'like', '%' . $request->location . '%');
+            })->with('location')->with('categories')->with('coordinates')->with('transaction')->first();
+        }else{
+            $dataLocation = Coordinates::where('latitude', $request->latitude)
+            ->where('longitude', $request->longitude)->with('location')
+            ->with('categories')->with('coordinates')->with('transaction')->get();
+        }
+        
+        if(isset($request->term) || $request->term !== null){
+            $filtered = $dataLocation->where(function($q) {
+                $q->where('name', 'like', '%' . $request->term . '%')
+                  ->orWhere('alias', 'like', '%' . $request->term . '%')
+                  ->orWhere('title', 'like', '%' . $request->term . '%');
+            });
+            $filtered->all();
+        }
+
+        if(isset($request->categories) || $request->categories !== null){
+            $filtered = $dataLocation->where(function($q) {
+                $q->where('alias', 'like', '%' . $request->term . '%')
+                  ->orWhere('title', 'like', '%' . $request->term . '%');
+            });
+            $filtered->all();
+        }
+
+        if(isset($request->price) || $request->price !== null){
+            $filtered = $dataLocation->where('price', $request->price);
+            $filtered->all();
+        }
+
+        if(isset($request->radius) || $request->radius !== null){
+            $filtered = $dataLocation->where('distance', '<=', $request->radius);
+            $filtered->all();
+        }
+
+        if(isset($request->sort_by) || $request->sort_by !== null){
+            if(in_array($request->sort_by, ['rating', 'review_count', 'distance'])){
+                $dataLocation->sortBy($request->sort_by);
+            }
+        }
+        
+        $data = [
+            'status' => 'success',
+            'data' => $dataLocation,
+            'message' => '',
+            'error' => false
+        ];
+        
+		return $data;
     }
 }

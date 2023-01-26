@@ -24,22 +24,17 @@ class BusinessResource extends JsonResource
         $coord = $coordinate->getCoordinate($this->id);
         $locations = new BusinessesLocation();
         $location = $locations->getLocation($this->id);
-        $display_location = isset($location['address1']).' , '.isset($location['address2']);
-        // $display_location = $location['address1']. ' , '. $location['address2']. ' , '. $location['city']. ' , '.
-        // $location['state']. ' , '. $location['zip_code'];
         
         return [
             'id' => $this->id,
             'alias' => $this->alias,
             'categories' => $categories,
             'coordinates' => $coord,
-            'display_phone' => $this->phone,
+            'phone' => $this->phone,
             'distance' => $this->distance,
-            'id' => $this->id, //encrypt
             "image_url" => asset('storage/'.$this->image_url), 
             "is_closed" => $this->is_closed,
             "location" => $location,
-            "display_location" => $display_location,
             "name" => $this->name,
             "phone" => $this->phone,
             "price" => $this->price,

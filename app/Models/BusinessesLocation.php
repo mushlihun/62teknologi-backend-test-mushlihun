@@ -22,8 +22,7 @@ class BusinessesLocation extends Model
     public function getLocation($business_id)
     {
         $data = BusinessesLocation::where('business_id', $business_id)
-        ->select('address1','address2','address3','city','country','state','zip_code'
-        )
+        ->select('address1','address2','address3','city','country','state','zip_code')
         ->first();
         return $data;
     }

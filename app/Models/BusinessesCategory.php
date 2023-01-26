@@ -18,9 +18,10 @@ class BusinessesCategory extends Model
     public function getCategories($business_id)
     {
         $data = BusinessesCategory::join('business_category_relation as t01', 't01.category_id', '=', 'businesses_categories.id')
-        // ->join('businesses as t03', 't03.id', '=', 't01.business_id')
-        // ->where('business_id', $business_id)
-        ->get(['businesses_categories.alias','businesses_categories.title']);
+        ->join('businesses as t03', 't03.id', '=', 't01.business_id')
+        ->where('business_id', $business_id)
+        ->get(['businesses_categories.alias','businesses_categories.title'])
+        ->first();
         return $data;
     }
 }
