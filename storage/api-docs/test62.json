@@ -10,7 +10,7 @@
             "name": "GPL2",
             "url": "https://devsenv.com"
         },
-        "version": "1.0.1"
+        "version": "1.0.0"
     },
   "servers": [
     {
@@ -25,7 +25,21 @@
           ],
           "summary": "Get Business",
           "description": "Get Business as Array",
-          "operationId": "User",
+          "operationId": "queryid",
+          "parameters": [
+            {
+              "name": "slug",
+              "in": "path",
+              "description": "slug, eg; 1",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer"
+              },
+              "example": 5
+            }
+          ],
           "responses": {
             "200": {
               "description": "Get Business List as Array"
@@ -51,7 +65,7 @@
           ],
           "summary": "Create Business",
           "description": "Create data business",
-          "operationId": "535ffeda4b78916efd658b2844ea897a",
+          "operationId": "create",
           "requestBody": {
             "content": {
               "application/json": {
@@ -81,7 +95,21 @@
           ],
           "summary": "Delete Business",
           "description": "Delete data business",
-          "operationId": "535ffeda4b78916efd658b2844ea897a",
+          "operationId": "delete",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id, eg; 1",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer"
+              },
+              "example": 1
+            }
+          ],
           "requestBody": {
             "content": {
               "application/json": {
@@ -111,7 +139,21 @@
           ],
           "summary": "Edit Business",
           "description": "Edit data business",
-          "operationId": "535ffeda4b78916efd658b2844ea897a",
+          "operationId": "edit",
+          "parameters": [
+            {
+              "name": "ids",
+              "in": "path",
+              "description": "ids, eg; 1",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer"
+              },
+              "example": 12
+            }
+          ],
           "requestBody": {
             "content": {
               "application/json": {
@@ -189,7 +231,7 @@
               "schema": {
                 "type": "integer"
               },
-              "example": "+6281234567890"
+              "example": "6281234567890"
             },
             {
               "name": "limit",
@@ -212,8 +254,7 @@
               "explode": true,
               "schema": {
                 "type": "integer"
-              },
-              "example": "41.7873382568356"
+              }
             },
             {
               "name": "longitude",
@@ -224,8 +265,7 @@
               "explode": true,
               "schema": {
                 "type": "integer"
-              },
-              "example": "-123.051551818848"
+              }
             },
             {
               "name": "review_count",
@@ -248,8 +288,7 @@
               "explode": true,
               "schema": {
                 "type": "integer"
-              },
-              "example": "4992.437696561"
+              }
             }
           ],
           "responses": {
