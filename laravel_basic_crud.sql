@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2023 at 12:24 PM
+-- Generation Time: Jan 27, 2023 at 08:55 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -49,6 +49,13 @@ CREATE TABLE `businesses` (
 --
 
 INSERT INTO `businesses` (`id`, `name`, `alias`, `phone`, `distance`, `image_url`, `is_closed`, `price`, `rating`, `review_count`, `transaction_url`, `url`, `created_at`, `updated_at`) VALUES
+(1, 'Pizza Bangor', 'pizza-bangor', '+628987843362', 4992.437696561, '63a46e753a058.png', 'true', 20000, 4, 200, 'restaurant_reservation', 'https://www.yelp.com/biz/golden-boy-pizza-hamburg?adjust_creative=XsIsNkqpLmHqfJ51zfRn3A&utm_campaign=yelp_api_v3&utm_medium=api_v3', '2022-12-22 00:49:25', '2022-12-22 00:49:25'),
+(2, 'Pizza Bangor', 'pizza-bangor', '+628987843362', 4992.437696561, '63a51cbe2022c.png', 'true', 30000, 4, 200, 'restaurant_reservation', 'https://www.yelp.com/biz/golden-boy-pizza-hamburg?adjust_creative=XsIsNkqpLmHqfJ51zfRn3A&utm_campaign=yelp_api_v3&utm_medium=api_v3', '2022-12-22 13:13:02', '2022-12-22 13:13:02'),
+(3, 'Banana Bangor', 'banana-bangor', '+628987843362', 4992.437696561, '63a56926024b7.png', 'true', 40000, 4, 200, 'restaurant_reservation', 'https://www.yelp.com/biz/golden-boy-pizza-hamburg?adjust_creative=XsIsNkqpLmHqfJ51zfRn3A&utm_campaign=yelp_api_v3&utm_medium=api_v3', '2022-12-22 18:39:02', '2022-12-22 18:39:02'),
+(4, 'Banana Bangor', 'banana-bangor', '+628987843362', 4992.437696561, '63a56be2a8efa.png', 'true', 50000, 4, 200, 'restaurant_reservation', 'https://www.yelp.com/biz/golden-boy-pizza-hamburg?adjust_creative=XsIsNkqpLmHqfJ51zfRn3A&utm_campaign=yelp_api_v3&utm_medium=api_v3', '2022-12-22 18:50:42', '2022-12-22 18:50:42'),
+(5, 'Banana Bangor', 'banana-bangor', '+628987843362', 4992.437696561, '63a56c8fe6cab.png', 'true', 60000, 4, 200, 'restaurant_reservation', 'https://www.yelp.com/biz/golden-boy-pizza-hamburg?adjust_creative=XsIsNkqpLmHqfJ51zfRn3A&utm_campaign=yelp_api_v3&utm_medium=api_v3', '2022-12-22 18:53:35', '2022-12-22 18:53:35'),
+(6, 'KFC Bangor', 'kfc-bangor', '+628987843362', 4992.437696561, '63a8ed2fc86df.png', 'true', 50000, 5, 200, 'restaurant_reservation', 'https://www.yelp.com/biz/golden-boy-pizza-hamburg?adjust_creative=XsIsNkqpLmHqfJ51zfRn3A&utm_campaign=yelp_api_v3&utm_medium=api_v3', '2022-12-25 10:39:12', '2022-12-25 10:39:12'),
+(7, 'Ayam Bangor', 'ayam-bangor', '+628987843362', 4992.437696561, '63a8ed4a66ec2.png', 'true', 20000, 5, 200, 'restaurant_reservation', 'https://www.yelp.com/biz/golden-boy-pizza-hamburg?adjust_creative=XsIsNkqpLmHqfJ51zfRn3A&utm_campaign=yelp_api_v3&utm_medium=api_v3', '2022-12-25 10:39:38', '2022-12-25 10:39:38'),
 (8, 'Pisang Goreng', 'pisang-goreng', '+628987843362', 4992.437696561, '63d24aa435839.png', 'true', 45000, 4, 200, 'restaurant_reservation', NULL, '2022-12-22 00:49:25', '2023-01-26 08:40:52'),
 (12, 'Pizza Bangor', 'pizza-bangor', '+628987843362', 4992.437696561, '63a51cbe2022c.png', 'true', 30000, 4, 200, 'restaurant_reservation', NULL, '2022-12-22 13:13:02', '2022-12-22 13:13:02'),
 (13, 'Banana Bangor', 'banana-bangor', '+628987843362', 4992.437696561, '63a56926024b7.png', 'true', 40000, 4, 200, 'restaurant_reservation', NULL, '2022-12-22 18:39:02', '2022-12-22 18:39:02'),
@@ -61,8 +68,9 @@ INSERT INTO `businesses` (`id`, `name`, `alias`, `phone`, `distance`, `image_url
 (20, 'Nikita Bangor', 'nikita-bangor', '+628987843362', 4992.437696561, '63a8ed85954ad.png', 'true', 10000, 5, 200, 'restaurant_reservation', NULL, '2022-12-25 10:40:37', '2022-12-25 10:40:37'),
 (21, 'MCD Bangor', 'mcd-bangor', '+628987843362', 4992.437696561, '63a8edc73e9d3.png', 'true', 10000, 5, 200, 'restaurant_reservation', NULL, '2022-12-25 10:41:43', '2022-12-25 10:41:43'),
 (22, 'CFC Bangor', 'cfc-bangor', '+628987843362', 4992.437696561, '63a8edcd4f98f.png', 'true', 10000, 5, 200, 'restaurant_reservation', NULL, '2022-12-25 10:41:49', '2022-12-25 10:41:49'),
-(43, 'Ikan Goreng', 'ikan-goreng', '+6281234567890', 4992.437696561, '63d247c0b9471.png', '1', 50000, 4, 200, 'restaurant_reservation', 'https://www.yelp.com/biz/golden-boy-pizza-hamburg?adjust_creative=XsIsNkqpLmHqfJ51zfRn3A&utm_campaign=yelp_api_v3&utm_medium=api_v3', '2023-01-26 08:28:32', '2023-01-26 08:28:32'),
-(45, 'Ayam Goreng', 'ayam-goreng', '+6281234567890', 4992.437696561, '63d24c963cdd2.png', '1', 50000, 4, 200, 'restaurant_reservation', 'https://www.yelp.com/biz/golden-boy-pizza-hamburg?adjust_creative=XsIsNkqpLmHqfJ51zfRn3A&utm_campaign=yelp_api_v3&utm_medium=api_v3', '2023-01-26 08:49:10', '2023-01-26 08:49:10');
+(43, 'Ikan Goreng', 'ikan-goreng', '+6281234567890', 4992.437696561, '63d247c0b9471.png', 'true', 50000, 4, 200, 'restaurant_reservation', 'https://www.yelp.com/biz/golden-boy-pizza-hamburg?adjust_creative=XsIsNkqpLmHqfJ51zfRn3A&utm_campaign=yelp_api_v3&utm_medium=api_v3', '2023-01-26 08:28:32', '2023-01-26 08:28:32'),
+(45, 'Ayam Goreng', 'ayam-goreng', '+6281234567890', 4992.437696561, '63d24c963cdd2.png', 'true', 50000, 4, 200, 'restaurant_reservation', 'https://www.yelp.com/biz/golden-boy-pizza-hamburg?adjust_creative=XsIsNkqpLmHqfJ51zfRn3A&utm_campaign=yelp_api_v3&utm_medium=api_v3', '2023-01-26 08:49:10', '2023-01-26 08:49:10'),
+(46, 'Ayam Goreng', 'ayam-goreng', '+6281234567890', 4992.437696561, '63d379d7df7a8.png', 'true', 50000, 4, 200, 'restaurant_reservation', 'https://www.yelp.com/biz/golden-boy-pizza-hamburg?adjust_creative=XsIsNkqpLmHqfJ51zfRn3A&utm_campaign=yelp_api_v3&utm_medium=api_v3', '2023-01-27 06:14:32', '2023-01-27 06:14:32');
 
 -- --------------------------------------------------------
 
@@ -108,8 +116,22 @@ CREATE TABLE `businesses_coordinates` (
 --
 
 INSERT INTO `businesses_coordinates` (`id`, `business_id`, `latitude`, `longitude`, `created_at`, `updated_at`) VALUES
-(36, 43, 41.787338256836, -123.05155181885, '2023-01-26 08:28:32', '2023-01-26 08:28:32'),
-(38, 45, 41.787338256836, -123.05155181885, '2023-01-26 08:49:10', '2023-01-26 08:49:10');
+(1, 8, 41.787338256836, -123.05155181885, '2023-01-26 13:13:02', '2023-01-26 13:13:02'),
+(2, 9, 41.787338256836, -123.05155181885, '2023-01-25 18:39:02', '2023-01-25 18:39:02'),
+(3, 10, 41.787338256836, -123.05155181885, '2023-01-25 18:50:42', '2023-01-25 18:50:42'),
+(4, 11, 41.787338256836, -123.05155181885, '2023-01-25 18:53:36', '2023-01-25 18:53:36'),
+(5, 12, 41.787338256836, -123.05155181885, '2023-01-26 13:13:02', '2023-01-26 13:13:02'),
+(6, 13, 41.787338256836, -123.05155181885, '2023-01-25 18:39:02', '2023-01-25 18:39:02'),
+(7, 14, 41.787338256836, -123.05155181885, '2023-01-25 18:50:42', '2023-01-25 18:50:42'),
+(8, 15, 41.787338256836, -123.05155181885, '2023-01-25 18:53:36', '2023-01-25 18:53:36'),
+(9, 16, 41.787338256836, -123.05155181885, '2023-01-27 10:39:12', '2023-01-27 10:39:12'),
+(10, 17, 41.787338256836, -123.05155181885, '2023-01-27 10:39:38', '2023-01-27 10:39:38'),
+(11, 18, 41.787338256836, -123.05155181885, '2023-01-27 10:40:04', '2023-01-27 10:40:04'),
+(12, 19, 41.787338256836, -123.05155181885, '2023-01-27 10:40:10', '2023-01-27 10:40:10'),
+(13, 20, 41.787338256836, -123.05155181885, '2023-01-27 10:40:37', '2023-01-27 10:40:37'),
+(14, 21, 41.787338256836, -123.05155181885, '2023-01-27 10:41:43', '2023-01-27 10:41:43'),
+(15, 22, 41.787338256836, -123.05155181885, '2023-01-27 10:41:49', '2023-01-27 10:41:49'),
+(16, 46, 41.787338256836, -123.05155181885, '2023-01-27 06:14:32', '2023-01-27 06:14:32');
 
 -- --------------------------------------------------------
 
@@ -136,8 +158,21 @@ CREATE TABLE `businesses_locations` (
 --
 
 INSERT INTO `businesses_locations` (`id`, `business_id`, `address1`, `address2`, `address3`, `city`, `country`, `state`, `zip_code`, `created_at`, `updated_at`) VALUES
-(35, 43, 'Jalan Dr. Wahidin', 'Jalur 7 No. 10', 'Sungai Jawi', 'Pontiank', 'INA', 'Kalimantan Barat', '78115', '2023-01-26 08:28:32', '2023-01-26 08:28:32'),
-(37, 45, 'Jalan Dr. Wahidin', 'Jalur 7 No. 10', 'Sungai Jawi', 'Pontiank', 'INA', 'Kalimantan Barat', '78115', '2023-01-26 08:49:10', '2023-01-26 08:49:10');
+(1, 8, 'Jl. dr. Wahidin S', 'Gg. Batas Pandang', 'Jalur 7 NO. 10', 'Pontianak', 'INA', 'Kalimantan Barat', '17520', '2023-01-24 18:50:42', '2023-01-24 18:50:42'),
+(2, 12, 'Jl. dr. Wahidin S', 'Gg. Batas Pandang', 'Jalur 7 NO. 10', 'Pontianak', 'INA', 'Kalimantan Barat', '17520', '2023-01-24 18:53:36', '2023-01-24 18:53:36'),
+(3, 13, 'Jl. dr. Wahidin S', 'Gg. Batas Pandang', 'Jalur 7 NO. 10', 'Pontianak', 'INA', 'Kalimantan Barat', '17520', '2023-01-26 10:39:12', '2023-01-26 10:39:12'),
+(4, 14, 'Jl. dr. Wahidin S', 'Gg. Batas Pandang', 'Jalur 7 NO. 10', 'Pontianak', 'INA', 'Kalimantan Barat', '17520', '2023-01-26 10:39:38', '2023-01-26 10:39:38'),
+(5, 15, 'Jl. dr. Wahidin S', 'Gg. Batas Pandang', 'Jalur 7 NO. 10', 'Pontianak', 'INA', 'Kalimantan Barat', '17520', '2023-01-26 10:40:04', '2023-01-26 10:40:04'),
+(6, 14, 'Jl. dr. Wahidin S', 'Gg. Batas Pandang', 'Jalur 7 NO. 10', 'Pontianak', 'INA', 'Kalimantan Barat', '17520', '2023-01-24 18:50:42', '2023-01-24 18:50:42'),
+(7, 15, 'Jl. dr. Wahidin S', 'Gg. Batas Pandang', 'Jalur 7 NO. 10', 'Pontianak', 'INA', 'Kalimantan Barat', '17520', '2023-01-24 18:53:36', '2023-01-24 18:53:36'),
+(8, 16, 'Jl. dr. Wahidin S', 'Gg. Batas Pandang', 'Jalur 7 NO. 10', 'Pontianak', 'INA', 'Kalimantan Barat', '17520', '2023-01-26 10:39:12', '2023-01-26 10:39:12'),
+(9, 17, 'Jl. dr. Wahidin S', 'Gg. Batas Pandang', 'Jalur 7 NO. 10', 'Pontianak', 'INA', 'Kalimantan Barat', '17520', '2023-01-26 10:39:38', '2023-01-26 10:39:38'),
+(10, 18, 'Jl. dr. Wahidin S', 'Gg. Batas Pandang', 'Jalur 7 NO. 10', 'Pontianak', 'INA', 'Kalimantan Barat', '17520', '2023-01-26 10:40:04', '2023-01-26 10:40:04'),
+(11, 19, 'Jl. dr. Wahidin S', 'Gg. Batas Pandang', 'Jalur 7 NO. 10', 'Pontianak', 'INA', 'Kalimantan Barat', '17520', '2023-01-26 10:40:10', '2023-01-26 10:40:10'),
+(12, 20, 'Jl. dr. Wahidin S', 'Gg. Batas Pandang', 'Jalur 7 NO. 10', 'Pontianak', 'INA', 'Kalimantan Barat', '17520', '2023-01-26 10:40:37', '2023-01-26 10:40:37'),
+(13, 21, 'Jl. dr. Wahidin S', 'Gg. Batas Pandang', 'Jalur 7 NO. 10', 'Pontianak', 'INA', 'Kalimantan Barat', '17520', '2023-01-26 10:41:43', '2023-01-26 10:41:43'),
+(14, 22, 'Jl. dr. Wahidin S', 'Gg. Batas Pandang', 'Jalur 7 NO. 10', 'Pontianak', 'INA', 'Kalimantan Barat', '17520', '2023-01-26 10:41:49', '2023-01-26 10:41:49'),
+(15, 46, 'Jalan Dr. Wahidin', 'Jalur 7 No. 10', 'Sungai Jawi', 'Pontiank', 'INA', 'Kalimantan Barat', '78115', '2023-01-27 06:14:32', '2023-01-27 06:14:32');
 
 -- --------------------------------------------------------
 
@@ -152,6 +187,36 @@ CREATE TABLE `business_category_relation` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `business_category_relation`
+--
+
+INSERT INTO `business_category_relation` (`id`, `business_id`, `category_id`, `created_at`, `updated_at`) VALUES
+(18, 12, 2, '2022-12-22 13:13:02', '2022-12-22 13:13:02'),
+(19, 12, 1, '2022-12-22 13:13:02', '2022-12-22 13:13:02'),
+(20, 13, 2, '2022-12-22 18:39:02', '2022-12-22 18:39:02'),
+(21, 13, 1, '2022-12-22 18:39:02', '2022-12-22 18:39:02'),
+(22, 14, 2, '2022-12-22 18:50:42', '2022-12-22 18:50:42'),
+(23, 14, 1, '2022-12-22 18:50:42', '2022-12-22 18:50:42'),
+(24, 15, 2, '2022-12-22 18:53:36', '2022-12-22 18:53:36'),
+(25, 15, 1, '2022-12-22 18:53:36', '2022-12-22 18:53:36'),
+(26, 16, 2, '2022-12-25 10:39:12', '2022-12-25 10:39:12'),
+(27, 16, 1, '2022-12-25 10:39:12', '2022-12-25 10:39:12'),
+(28, 17, 1, '2022-12-25 10:39:38', '2022-12-25 10:39:38'),
+(29, 17, 2, '2022-12-25 10:39:38', '2022-12-25 10:39:38'),
+(30, 18, 1, '2022-12-25 10:40:04', '2022-12-25 10:40:04'),
+(31, 18, 2, '2022-12-25 10:40:04', '2022-12-25 10:40:04'),
+(32, 19, 1, '2022-12-25 10:40:10', '2022-12-25 10:40:10'),
+(33, 19, 2, '2022-12-25 10:40:10', '2022-12-25 10:40:10'),
+(34, 20, 1, '2022-12-25 10:40:37', '2022-12-25 10:40:37'),
+(35, 20, 2, '2022-12-25 10:40:37', '2022-12-25 10:40:37'),
+(36, 21, 1, '2022-12-25 10:41:43', '2022-12-25 10:41:43'),
+(37, 21, 2, '2022-12-25 10:41:43', '2022-12-25 10:41:43'),
+(38, 22, 1, '2022-12-25 10:41:49', '2022-12-25 10:41:49'),
+(39, 22, 2, '2022-12-25 10:41:49', '2022-12-25 10:41:49'),
+(40, 46, 2, '2023-01-27 06:14:32', '2023-01-27 06:14:32'),
+(41, 46, 1, '2023-01-27 06:14:32', '2023-01-27 06:14:32');
 
 -- --------------------------------------------------------
 
@@ -587,7 +652,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `businesses`
 --
 ALTER TABLE `businesses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `businesses_categories`
@@ -599,19 +664,19 @@ ALTER TABLE `businesses_categories`
 -- AUTO_INCREMENT for table `businesses_coordinates`
 --
 ALTER TABLE `businesses_coordinates`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `businesses_locations`
 --
 ALTER TABLE `businesses_locations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `business_category_relation`
 --
 ALTER TABLE `business_category_relation`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -640,12 +705,6 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `businesses_coordinates`
---
-ALTER TABLE `businesses_coordinates`
-  ADD CONSTRAINT `businesses_coordinates_business_id_foreign` FOREIGN KEY (`business_id`) REFERENCES `businesses` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `businesses_locations`

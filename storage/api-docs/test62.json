@@ -1,0 +1,817 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Basic CRUD Laravel API Documentation",
+        "description": "API Documentation - Basic CRUD Laravel",
+        "contact": {
+            "email": "listcreative15@gmail.com"
+        },
+        "license": {
+            "name": "GPL2",
+            "url": "https://devsenv.com"
+        },
+        "version": "1.0.1"
+    },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+    "paths": {
+      "/api/business/{slug}": {
+        "get": {
+          "tags": [
+            "Business"
+          ],
+          "summary": "Get Business",
+          "description": "Get Business as Array",
+          "operationId": "User",
+          "responses": {
+            "200": {
+              "description": "Get Business List as Array"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          },
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        }
+      },
+      "/api/business": {
+        "post": {
+          "tags": [
+            "Business"
+          ],
+          "summary": "Create Business",
+          "description": "Create data business",
+          "operationId": "535ffeda4b78916efd658b2844ea897a",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/business"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Create"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          }
+        }
+      },
+      "/api/business/{id}": {
+        "delete": {
+          "tags": [
+            "Business"
+          ],
+          "summary": "Delete Business",
+          "description": "Delete data business",
+          "operationId": "535ffeda4b78916efd658b2844ea897a",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/business"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Delete"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          }
+        }
+      },
+      "/api/business/{ids}": {
+        "put": {
+          "tags": [
+            "Business"
+          ],
+          "summary": "Edit Business",
+          "description": "Edit data business",
+          "operationId": "535ffeda4b78916efd658b2844ea897a",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/business"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Edit"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          }
+        }
+      },
+      "/api/businesses/search": {
+        "get": {
+          "tags": [
+            "Business"
+          ],
+          "summary": "Filter Search",
+          "description": "Filter Search",
+          "operationId": "search",
+          "parameters": [
+            {
+              "name": "Rating",
+              "in": "query",
+              "description": "Rating, eg; 5",
+              "required": false,
+              "style": "form",
+              "explode": true,
+              "schema": {
+                "type": "integer"
+              },
+              "example": 5
+            },
+            {
+              "name": "name",
+              "in": "query",
+              "description": "name, eg; Ayam Goreng",
+              "required": false,
+              "style": "form",
+              "explode": true,
+              "schema": {
+                "type": "string"
+              },
+              "example": "Ayam Goreng"
+            },
+            {
+              "name": "Price",
+              "in": "query",
+              "description": "Price, eg; 20000",
+              "required": false,
+              "style": "form",
+              "explode": true,
+              "schema": {
+                "type": "integer"
+              },
+              "example": 20000
+            },
+            {
+              "name": "phone",
+              "in": "query",
+              "description": "phone, eg; 6281234567890",
+              "required": false,
+              "style": "form",
+              "explode": true,
+              "schema": {
+                "type": "integer"
+              },
+              "example": "+6281234567890"
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "description": "limit, eg; 5",
+              "required": false,
+              "style": "form",
+              "explode": true,
+              "schema": {
+                "type": "integer"
+              },
+              "example": 5
+            },
+            {
+              "name": "latitude",
+              "in": "query",
+              "description": "latitude, eg; 41.7873382568356",
+              "required": false,
+              "style": "form",
+              "explode": true,
+              "schema": {
+                "type": "integer"
+              },
+              "example": "41.7873382568356"
+            },
+            {
+              "name": "longitude",
+              "in": "query",
+              "description": "longitude, eg; -123.051551818848",
+              "required": false,
+              "style": "form",
+              "explode": true,
+              "schema": {
+                "type": "integer"
+              },
+              "example": "-123.051551818848"
+            },
+            {
+              "name": "review_count",
+              "in": "query",
+              "description": "review_count, eg; 200",
+              "required": false,
+              "style": "form",
+              "explode": true,
+              "schema": {
+                "type": "integer"
+              },
+              "example": "200"
+            },
+            {
+              "name": "distance",
+              "in": "query",
+              "description": "distance, eg; 4992.437696561",
+              "required": false,
+              "style": "form",
+              "explode": true,
+              "schema": {
+                "type": "integer"
+              },
+              "example": "4992.437696561"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Filter Search"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          }
+        }
+      },
+      "/api/category": {
+        "get": {
+          "tags": [
+            "Category"
+          ],
+          "summary": "Get Category",
+          "description": "Get Category as Array",
+          "operationId": "User",
+          "responses": {
+            "200": {
+              "description": "Get Category List as Array"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          },
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        }
+      },
+      "/api/auth/login": {
+        "post": {
+          "tags": [
+            "Authentication"
+          ],
+          "summary": "Login",
+          "description": "Login",
+          "operationId": "535ffeda4b78916efd658b2844ea897a",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/auth_login_body"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Login"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          }
+        }
+      },
+      "/api/auth/register": {
+        "post": {
+          "tags": [
+            "Authentication"
+          ],
+          "summary": "Register User",
+          "description": "Register New User",
+          "operationId": "da8643013c2941f5ed7f8a9c9b4a7f7a",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/auth_register_body"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Register New User Data"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          }
+        }
+      },
+      "/api/auth/me": {
+        "get": {
+          "tags": [
+            "Authentication"
+          ],
+          "summary": "Authenticated User Profile",
+          "description": "Authenticated User Profile",
+          "operationId": "1537d2a532022d0974e4cd2d83c6a38f",
+          "responses": {
+            "200": {
+              "description": "Authenticated User Profile"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          },
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        }
+      },
+      "/api/auth/logout": {
+        "post": {
+          "tags": [
+            "Authentication"
+          ],
+          "summary": "Logout",
+          "description": "Logout",
+          "operationId": "46f8a14c8083abb69eed72768aa08629",
+          "responses": {
+            "200": {
+              "description": "Logout"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          }
+        }
+      },
+      "/api/auth/refresh": {
+        "post": {
+          "tags": [
+            "Authentication"
+          ],
+          "summary": "Refresh",
+          "description": "Refresh",
+          "operationId": "f3538b6e9c46bcf601a9d194288b03d4",
+          "responses": {
+            "200": {
+              "description": "Refresh"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          },
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        }
+      },
+      "/api/products": {
+        "get": {
+          "tags": [
+            "Products"
+          ],
+          "summary": "Get Product List",
+          "description": "Get Product List as Array",
+          "operationId": "index",
+          "responses": {
+            "200": {
+              "description": "Get Product List as Array"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          },
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        },
+        "post": {
+          "tags": [
+            "Products"
+          ],
+          "summary": "Create New Product",
+          "description": "Create New Product",
+          "operationId": "store",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/api_products_body"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Create New Product"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          },
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        }
+      },
+      "/api/products/view/all": {
+        "get": {
+          "tags": [
+            "Products"
+          ],
+          "summary": "All Products - Publicly Accessible",
+          "description": "All Products - Publicly Accessible",
+          "operationId": "indexAll",
+          "parameters": [
+            {
+              "name": "perPage",
+              "in": "query",
+              "description": "perPage, eg; 20",
+              "required": false,
+              "style": "form",
+              "explode": true,
+              "schema": {
+                "type": "integer"
+              },
+              "example": 20
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "All Products - Publicly Accessible"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          }
+        }
+      },
+      "/api/products/view/search": {
+        "get": {
+          "tags": [
+            "Products"
+          ],
+          "summary": "All Products - Publicly Accessible",
+          "description": "All Products - Publicly Accessible",
+          "operationId": "search",
+          "parameters": [
+            {
+              "name": "perPage",
+              "in": "query",
+              "description": "perPage, eg; 20",
+              "required": false,
+              "style": "form",
+              "explode": true,
+              "schema": {
+                "type": "integer"
+              },
+              "example": 20
+            },
+            {
+              "name": "search",
+              "in": "query",
+              "description": "search, eg; Test",
+              "required": false,
+              "style": "form",
+              "explode": true,
+              "schema": {
+                "type": "string"
+              },
+              "example": "Test"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "All Products - Publicly Accessible"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          }
+        }
+      },
+      "/api/products/{id}": {
+        "get": {
+          "tags": [
+            "Products"
+          ],
+          "summary": "Show Product Details",
+          "description": "Show Product Details",
+          "operationId": "show",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id, eg; 1",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Show Product Details"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          },
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        },
+        "put": {
+          "tags": [
+            "Products"
+          ],
+          "summary": "Update Product",
+          "description": "Update Product",
+          "operationId": "update",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id, eg; 1",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/products_id_body"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Update Product"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          },
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        },
+        "delete": {
+          "tags": [
+            "Products"
+          ],
+          "summary": "Delete Product",
+          "description": "Delete Product",
+          "operationId": "destroy",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "id, eg; 1",
+              "required": true,
+              "style": "simple",
+              "explode": false,
+              "schema": {
+                "type": "integer"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Delete Product"
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Resource Not Found"
+            }
+          },
+          "security": [
+            {
+              "bearer": []
+            }
+          ]
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "business": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "Ikan Goreng"
+            },
+            "alias": {
+              "type": "string",
+              "example": "ikan goreng"
+            },
+            "categories": [{
+              "category_id": "1",
+              "example": "123456"
+            }],
+            "coordinates": {
+              "latitude": 41.7873382568356,
+              "longitude": -123.051551818848
+            },
+            "distance": {
+              "type": "string",
+              "example": "-123.051551818848"
+            }
+          }
+          
+        },
+        "auth_register_body": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "Jhon Doe"
+            },
+            "email": {
+              "type": "string",
+              "example": "jhondoe@example.com"
+            },
+            "password": {
+              "type": "string",
+              "example": "123456"
+            },
+            "password_confirmation": {
+              "type": "string",
+              "example": "123456"
+            }
+          }
+        },
+        "auth_login_body": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string",
+              "example": "admin@example.com"
+            },
+            "password": {
+              "type": "string",
+              "example": "123456"
+            }
+          }
+        },
+        "products_id_body": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "example": "Product 1"
+            },
+            "description": {
+              "type": "string",
+              "example": "Description"
+            },
+            "price": {
+              "type": "integer",
+              "example": 10120
+            },
+            "image": {
+              "type": "string",
+              "example": ""
+            }
+          }
+        },
+        "api_products_body": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "example": "Product 1"
+            },
+            "description": {
+              "type": "string",
+              "example": "Description"
+            },
+            "price": {
+              "type": "integer",
+              "example": 10120
+            },
+            "image": {
+              "type": "string",
+              "example": ""
+            }
+          }
+        }
+      },
+      "securitySchemes": {
+        "bearer": {
+          "type": "apiKey",
+          "description": "Bearer token, Ex: Bearer <token>",
+          "name": "Authorization",
+          "in": "header",
+          "bearerFormat": "JWT"
+        }
+      }
+    },
+    "security": [
+        {
+            "bearer": {
+                "type": "apiKey",
+                "description": "Bearer token, Ex: Bearer <token>",
+                "name": "Authorization",
+                "in": "header",
+                "scheme": "bearer"
+            }
+        }
+    ]
+}
