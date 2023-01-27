@@ -46,6 +46,8 @@ Route::group([
     Route::controller(BusinessController::class)->group(function () {
         Route::get('business', 'fetchAllData');
         Route::get('business/{slug}', 'showslug');
+        Route::get('business/search', 'index');
+        Route::get('business/search={field}={keyword}&sort_by={sortBy}&limit={limit}', 'search');
         Route::get('business/search={field}={keyword}&sort_by={sortBy}&limit={limit}', 'fetchDataByParams');
         Route::post('business', 'store');
         Route::put('business/{id}', 'update');

@@ -99,9 +99,7 @@ class Business extends Model
 
         $limits = (!empty($limit)) ? $limit : 6;
         $data = $business->paginate($limits);
-        //return new BusinessResource($data);
         return $business->paginate($limits);
-        //return BusinessResource::collection($data);
 
     }
     public function getBusinessDetail($id)
@@ -115,14 +113,6 @@ class Business extends Model
         $data = Business::query();
         $data->where('id', $slug);
         return new BusinessResource($data->first());
-    }
-    public function getCategories($business_id)
-    {
-        $data = BusinessesCategory::join('business_category_relation as t01', 't01.category_id', '=', 'businesses_categories.id')
-        ->join('businesses as t03', 't03.id', '=', 't01.business_id')
-        ->where('business_id', $business_id)
-        ->get(['businesses_categories.alias','businesses_categories.title']);
-        return $data;
     }
     public function insertData($data_post)
     {

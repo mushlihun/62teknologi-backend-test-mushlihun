@@ -21,11 +21,37 @@ class BusinessController extends Controller
     public function index(Request $request)
     {
         $business = new Business();
-        $searchParams = $request->all();
+        $searchParams = $request->json()->all();
         $data = $business->getBusinesses($searchParams);
         return BusinessResource::collection($data);
-    }
+        // $search = $request->json()->all();//$request->all();
 
+        // $arrSearch = [];
+
+        // if(isset($search['name'])&&$search['name'] != "" && $search['name']!=null){
+        //     $arrName = ['name','like','%'.$search['name'].'%'];
+        //     $arrSearch[] = $arrName;
+        // }
+        // if(isset($search['phone'])&&$search['phone'] != "" && $search['phone']!=null){
+        //     $arrPhone = ['phone','like','%'.$search['phone'].'%'];
+        //     $arrSearch[] = $arrPhone;
+        // }
+        // if(isset($search['price'])&&$search['price'] != "" && $search['price']!=null){
+        //     $arrPrice = ['price',$search['priceCond'],$search['price']];
+        //     $arrSearch[] = $arrPrice;
+        // }
+        // if(isset($search['rating'])&&$search['rating'] != "" && $search['rating']!=null){
+        //     $arrPrice = ['rating',$search['ratingCond'],$search['rating']];
+        //     $arrSearch[] = $arrPrice;
+        // }
+        // if(isset($search['categories'])&&$search['categories'] != "" && $search['categories']!=null){
+        //     $business = Business::where($arrSearch)->whereIn('categories_id', $search['categories'])->paginate(10);
+        // }else{
+        //     $business = Business::where($arrSearch)->paginate(10);
+        // }
+
+        // return response()->json(['messages' => 'success', 'data'=>$business], 200);
+    }
     /**
      * Show the form for creating a new resource.
      *
